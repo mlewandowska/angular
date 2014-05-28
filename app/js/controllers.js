@@ -5,6 +5,8 @@
 angular.module('myApp.controllers', [])
   .controller('MainCtrl', ['$scope', 'socketio', function($scope, socketio) {
   	$scope.Playlist = [];
+  	$scope.query = '';
+  	$scope.orderProp = "-id";
   	socketio.emit('init');
   	// console.log('emit init');
 
