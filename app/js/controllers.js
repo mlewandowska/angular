@@ -11,7 +11,7 @@ angular.module('myApp.controllers', [])
   	socketio.on('init', function ( data ) {
   		// console.log(data);
   		$scope.Playlist = data;
-  		$scope.$apply();
+  		// $scope.$apply();
   		// console.log('on init');
   		// console.log($scope.Playlist);
   	});
@@ -31,10 +31,17 @@ angular.module('myApp.controllers', [])
   	socketio.on('remove', function ( data ) {
   		for(var i = 0; i < $scope.Playlist.length; i++){
   			if($scope.Playlist[i].id === data.id){
-  				$scope.Playlist[i].splice(i,1);
+  				$scope.Playlist.splice(i,1);
   			}
   		}
   	});
+
+  	$scope.removeVideo = function ( video ) {
+  		console.log('remove');
+  		console.log(video);
+  		socketio.emit('remove', {'id': video});
+  		console.log('emited');
+  	}
 
 
   }])
@@ -47,7 +54,7 @@ angular.module('myApp.controllers', [])
   	socketio.on('init', function ( data ) {
   		// console.log(data);
   		$scope.Playlist = data;
-  		$scope.$apply();
+  		// $scope.$apply();
   		// console.log('on init');
   		// console.log($scope.Playlist);
   	});
@@ -67,7 +74,7 @@ angular.module('myApp.controllers', [])
   	socketio.on('remove', function ( data ) {
   		for(var i = 0; i < $scope.Playlist.length; i++){
   			if($scope.Playlist[i].id === data.id){
-  				$scope.Playlist[i].splice(i,1);
+  				$scope.Playlist.splice(i,1);
   			}
   		}
   	});
@@ -123,7 +130,7 @@ angular.module('myApp.controllers', [])
   	socketio.on('remove', function ( data ) {
   		for(var i = 0; i < $scope.Playlist.length; i++){
   			if($scope.Playlist[i].id === data.id){
-  				$scope.Playlist[i].splice(i,1);
+  				$scope.Playlist.splice(i,1);
   			}
   		}
   	});
