@@ -6,12 +6,14 @@
 		<table class="table table-stripped table-hover">
 			<thead>
 				<tr>
-					<th>Viedo</th>
+					<th>Playlist</th>
 				</tr>
 			</thead>
 			<tr ng-repeat="video in Playlist">
 				<td>
-					{{video.title}} ( {{video.url}} )
+					<a href="#/video/{{video.id}}"> 
+						{{video.title}} ( {{video.url}} )
+					</a>
 				</td>
 			</tr>
 		</table>

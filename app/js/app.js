@@ -9,7 +9,18 @@ angular.module('myApp', [
   'myApp.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/main', {templateUrl: 'partials/main.html', controller: 'MainCtrl'});
-  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  $routeProvider.otherwise({redirectTo: '/main'});
+  $routeProvider
+  	.when('/main', {
+  			templateUrl: 'partials/main.html', 
+  			controller: 'MainCtrl'
+  		})
+	  	.when('/addvideo', {
+  			templateUrl: 'partials/addvideo.html', 
+  			controller: 'AddVideoCtrl'
+  		})
+  	.when('/video/:videoId', {
+  			templateUrl: 'partials/video.html', 
+  			controller: 'VideoCtrl'
+  		})
+  	.otherwise({redirectTo: '/main'});
 }]);
