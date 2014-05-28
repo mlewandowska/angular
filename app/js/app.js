@@ -22,5 +22,9 @@ config(['$routeProvider', function($routeProvider) {
   			templateUrl: 'partials/video.html', 
   			controller: 'VideoCtrl'
   		})
+    .when('/editvideo/:videoId', {
+  			templateUrl: 'partials/editvideo.html', 
+  			controller: 'EditVideoCtrl'
+  		})
   	.otherwise({redirectTo: '/main'});
 }]);
