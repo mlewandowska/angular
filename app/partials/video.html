@@ -8,16 +8,18 @@
 	<!-- embeded video -->
 	<!-- https://www.youtube.com/watch?v=fdfw_EuVxNg -->
 	<!-- <iframe width="560" height="315" src="//www.youtube.com/embed/fdfw_EuVxNg" frameborder="0" allowfullscreen></iframe> -->
-	<p>
+	<!-- <p>
 		{{(video.url.substring(32, video.url.length))}}
 	</p>
 	<p>
 		{{video.embeded}}
-	</p>
-<!-- 	<iframe width="560" height="315" ng-src="{{video.embeded}}" 
-	frameborder="0" allowfullscreen></iframe> -->
+	</p> -->
+	<iframe width="560" height="315" ng-src="{{video.embeded}}"
+	frameborder="0" allowfullscreen></iframe>
 
-	<a href="{{video.url}}" target="_blank">See video @ YT</a>
+	<p>
+		<a href="{{video.url}}" target="_blank">See video @ YT</a>
+	</p>
 
 	</div>
 	<div class="col-md-1"></div>

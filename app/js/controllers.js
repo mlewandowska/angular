@@ -21,7 +21,7 @@ angular.module('myApp.controllers', [])
   	socketio.on('add', function ( data ) {
   		$scope.Playlist.push(data);
   	});
-  	
+
   	socketio.on('update', function ( data ) {
   		for(var i = 0; i < $scope.Playlist.length; i++){
   			if($scope.Playlist[i].id === data.id){
@@ -47,7 +47,7 @@ angular.module('myApp.controllers', [])
 
 
   }])
-  .controller('AddVideoCtrl', ['$scope', '$location', 'socketio', 
+  .controller('AddVideoCtrl', ['$scope', '$location', 'socketio',
   	function($scope, $location, socketio) {
   	$scope.Playlist = [];
   	socketio.emit('init');
@@ -64,7 +64,7 @@ angular.module('myApp.controllers', [])
   	socketio.on('add', function ( data ) {
   		$scope.Playlist.push(data);
   	});
-  	
+
   	socketio.on('update', function ( data ) {
   		for(var i = 0; i < $scope.Playlist.length; i++){
   			if($scope.Playlist[i].id === data.id){
@@ -91,7 +91,7 @@ angular.module('myApp.controllers', [])
   		$location.path('/main');
   	}
 
-  }])  .controller('EditVideoCtrl', ['$scope', '$location', '$routeParams', 'socketio', 
+  }])  .controller('EditVideoCtrl', ['$scope', '$location', '$routeParams', 'socketio',
   	function($scope, $location, $routeParams, socketio) {
   	$scope.Playlist = [];
 
@@ -115,7 +115,7 @@ angular.module('myApp.controllers', [])
   	socketio.on('add', function ( data ) {
   		$scope.Playlist.push(data);
   	});
-  	
+
   	socketio.on('update', function ( data ) {
   		for(var i = 0; i < $scope.Playlist.length; i++){
   			if($scope.Playlist[i].id === data.id){
@@ -138,7 +138,7 @@ angular.module('myApp.controllers', [])
   	}
 
   }])
-  .controller('VideoCtrl', ['$scope', '$routeParams', '$sce', 'socketio', 
+  .controller('VideoCtrl', ['$scope', '$routeParams', '$sce', 'socketio',
   	function($scope, $routeParams, $sce, socketio) {
   	$scope.Playlist = [];
   	$scope.video = {
@@ -154,7 +154,8 @@ angular.module('myApp.controllers', [])
   		for(var i = 0; i < $scope.Playlist.length; i++){
   			if($scope.Playlist[i].id === id){
   				var v = $scope.Playlist[i];
-  				v.embeded = "//www.youtube.com/embed/" + v.url.substring(32, v.url.length);
+          v.embeded = $sce.trustAsResourceUrl("http://www.youtube.com/embed/" + v.url.substring(32, v.url.length));
+  				// v.embeded = "//www.youtube.com/embed/" + v.url.substring(32, v.url.length);
 				// $sce.trustAs('resource_url', v.embeded);
   				$scope.video = v;
   				// console.log($scope.video);
@@ -166,7 +167,7 @@ angular.module('myApp.controllers', [])
   	socketio.on('add', function ( data ) {
   		$scope.Playlist.push(data);
   	});
-  	
+
   	socketio.on('update', function ( data ) {
   		for(var i = 0; i < $scope.Playlist.length; i++){
   			if($scope.Playlist[i].id === data.id){
